@@ -1,19 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import logo from "../assets/Logo-Tractian.svg";
 import "./HomePage.css";
 
-import { Layout, Menu, Breadcrumb, Avatar } from "antd";
+import { Layout, Menu, Avatar } from "antd";
 import { ApiOutlined, PieChartOutlined, UserOutlined } from "@ant-design/icons";
+import { setLoggedCompany, edit } from "../store/Company.store";
+import { useDispatch, useSelector } from "react-redux";
+import Overview from "../components/Overview/Overview";
 
-const { Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
+const { Sider } = Layout;
 
 function HomePage() {
   const [collapsed, setCollapsed] = useState(false);
+	const dispath = useDispatch()
+	const loggedCompany = useSelector(state => state.company.loggedCompany)
+	const hasEdited = useSelector(state => state.company.hasEdited)
 
+	useEffect(() => {
+		!hasEdited && dispath(setLoggedCompany());
+	},[])
+	
   return (
     <Layout style={{ minHeight: "100vh" }}>
+			
       <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
         <div className="logo">
           <img src={logo} alt="Logo" />
@@ -28,22 +38,14 @@ function HomePage() {
         </Menu>
         <div>
           <Avatar shape="square" size={64} icon={<UserOutlined />} />
+					<h2 onClick={() => dispath(edit('Caio Enterprise'))}>{loggedCompany.name}</h2>
         </div>
       </Sider>
+
       <Layout className="site-layout">
-        <Content style={{ margin: "0 16px" }}>
-          <Breadcrumb style={{ margin: "16px 0" }}>
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb>
-          <div className="site-layout-background component-box">
-            Bill is a cat.
-          </div>
-        </Content>
-        <Footer style={{ textAlign: "center" }}>
-          Ant Design ©2018 Created by Ant UED
-        </Footer>
+        <Overview />
       </Layout>
+
     </Layout>
   );
 }
