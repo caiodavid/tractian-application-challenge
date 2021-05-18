@@ -12,9 +12,14 @@ import {
 import storage from 'redux-persist/lib/storage'
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
 import companyReducer from './Company.store'
+import unitsReducer from './Units.store'
+import usersReducer from './Users.store'
+import assetsReducer from './Assets.store'
+
 
 const rootReducer = combineReducers({
-	company: companyReducer
+	company: companyReducer,
+	units: unitsReducer
 })
 
 const persistConfig = {
