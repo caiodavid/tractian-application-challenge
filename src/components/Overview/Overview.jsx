@@ -1,15 +1,16 @@
+// React
 import { useState, useEffect } from "react";
-
+// Redux
 import { useDispatch, useSelector } from "react-redux";
 import {
   setUnits,
   setSelectedUnity,
   clearSelectedUnity,
 } from "../../store/Units.store";
-
+// Style
 import "./Overview.css";
-
-import { Layout, Select } from "antd";
+// Ant Design
+import { Layout, Select, Row, Col } from "antd";
 import AssetsOverview from "../overviewComponents/AssetsOverview/AssetsOverview";
 const { Content, Footer, Header } = Layout;
 const { Option } = Select;
@@ -43,13 +44,31 @@ export default function Overview() {
             ))}
         </Select>
       </Header>
-      <Content style={{ margin: "15px 16px" }}>
-        <AssetsOverview />
-      </Content>
+      <Row>
+        <Col span={12}>
+          <Content style={{ margin: "15px 16px" }}>
+            <AssetsOverview />
+          </Content>
+        </Col>
+				<Col span={12}>
+          <Content style={{ margin: "15px 16px" }}>
+            <AssetsOverview />
+          </Content>
+        </Col>
+      </Row>
+
+			<Row>
+        <Col span={24}>
+          <Content style={{ margin: "15px 16px" }}>
+            <AssetsOverview />
+          </Content>
+        </Col>
+      </Row>
+
       <Footer style={{ textAlign: "center" }}>
-        Desenvolvido por{" "}
+        Desenvolvido por:{" "}
         <a href="https://github.com/caiodavid" target="_blank">
-          Caio David de Souza
+           Caio David de Souza
         </a>
       </Footer>
     </>

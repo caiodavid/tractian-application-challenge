@@ -8,6 +8,10 @@ import {
   setFilteredAssetsByUnityId,
   clearFilteredAssetsByUnityId,
 } from "../../../store/Assets.store";
+// Highcharts
+import Highcharts from "highcharts";
+import HighchartsReact from "highcharts-react-official";
+import { overviewAssetsChartOptions } from "../../../utils/overviewAssetsChartOptions";
 
 export default function AssetsOverview() {
   const [inAlertCounter, setInAlertCounter] = useState(0);
@@ -29,7 +33,7 @@ export default function AssetsOverview() {
     }
   }, [selectedUnity]);
 
-	// useEffect para atualizar couters
+  // useEffect para atualizar couters
   useEffect(() => {
     let inAlertStatus = 0;
     let inDowntimeStatus = 0;
@@ -80,8 +84,6 @@ export default function AssetsOverview() {
     setInOperationCounter(inOperationStatus);
   }, [filteredAssetsByUnityId]);
 
-	
-
   return (
     <div className="site-layout-background component-box">
       {Object.keys(selectedUnity).length === 0 ? (
@@ -89,6 +91,10 @@ export default function AssetsOverview() {
       ) : (
         <h1>{selectedUnity.name}</h1>
       )}
+
+      <div className="highcharts-content">
+        <HighchartsReact highcharts={Highcharts} options={overviewAssetsChartOptions(inOperationCounter, inAlertCounter, inDowntimeCounter)} />
+      </div>
     </div>
   );
 }
