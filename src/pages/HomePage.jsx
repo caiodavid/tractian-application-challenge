@@ -1,25 +1,38 @@
+// React
 import { useState, useEffect } from "react";
-
+// Style and Components
 import logo from "../assets/Logo-Tractian.svg";
 import "./HomePage.css";
-
+import Overview from "../components/Overview/Overview";
+// Redux
+import { useDispatch, useSelector } from "react-redux";
+import { setLoggedCompany, edit } from "../store/Company.store";
+import { setUnits } from "../store/Units.store";
+import { setUsers } from "../store/Users.store";
+import { setAssets } from "../store/Assets.store";
+import { handleFirstLoad } from "../store/SystemInfos.store"
+// Ant Design
 import { Layout, Menu, Avatar } from "antd";
 import { ApiOutlined, PieChartOutlined, UserOutlined } from "@ant-design/icons";
-import { setLoggedCompany, edit } from "../store/Company.store";
-import { useDispatch, useSelector } from "react-redux";
-import Overview from "../components/Overview/Overview";
-
 const { Sider } = Layout;
 
 function HomePage() {
   const [collapsed, setCollapsed] = useState(false);
 	const dispath = useDispatch()
 	const loggedCompany = useSelector(state => state.company.loggedCompany)
-	const hasEdited = useSelector(state => state.company.hasEdited)
+	const isTheFirstLoad = useSelector(state => state.systemInfo.firstLoad)
 
 	useEffect(() => {
-		!hasEdited && dispath(setLoggedCompany());
+		isTheFirstLoad && setInitialStates();
 	},[])
+
+	function setInitialStates() {
+		dispath(setLoggedCompany());
+		dispath(setUnits());
+		dispath(setUsers());
+		dispath(setAssets());
+		dispath(handleFirstLoad());
+	}
 	
   return (
     <Layout style={{ minHeight: "100vh" }}>

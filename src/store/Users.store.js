@@ -34,8 +34,6 @@ export const setSelectedUser = createAsyncThunk(
 	}
 )
 
-
-
 const users = createSlice({
 
 	name: 'users',
@@ -44,7 +42,7 @@ const users = createSlice({
 	reducers: {
 		clearSelectedUser(state) {
 			state.selectedUser = {};
-		} 
+		}
 	},
 
 	extraReducers: {

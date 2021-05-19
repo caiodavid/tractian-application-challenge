@@ -9,7 +9,8 @@ import {
 
 import "./Overview.css";
 
-import { Layout, Breadcrumb, Select } from "antd";
+import { Layout, Select } from "antd";
+import AssetsOverview from "../overviewComponents/AssetsOverview/AssetsOverview";
 const { Content, Footer, Header } = Layout;
 const { Option } = Select;
 
@@ -38,9 +39,7 @@ export default function Overview() {
 
   return (
     <>
-      <Header className = "overview-header"
-
-      >
+      <Header className="overview-header">
         <Select
           defaultValue={
             Object.keys(selectedUnity).length === 0 ? null : selectedUnity.id
@@ -57,13 +56,7 @@ export default function Overview() {
         </Select>
       </Header>
       <Content style={{ margin: "15px 16px" }}>
-        <div className="site-layout-background component-box">
-          {Object.keys(selectedUnity).length === 0 ? (
-            <h1>Todas as unidades</h1>
-          ) : (
-            <h1>{selectedUnity.name}</h1>
-          )}
-        </div>
+        <AssetsOverview />
       </Content>
       <Footer style={{ textAlign: "center" }}>
         Desenvolvido por{" "}

@@ -5,8 +5,7 @@ const initialState = {
 	isLogged: true,
 	loading: false,
 	error: null,
-	loggedCompany: {},
-	hasEdited: false
+	loggedCompany: {}
 }
 
 export const setLoggedCompany = createAsyncThunk(
