@@ -4,8 +4,9 @@ import api from "../services/api"
 const initialState = {
 	loading: false,
 	error: null,
-	allAssets: {},
-	selectedAsset: {},
+	allAssets: [],
+	selectedAsset: [],
+	filteredAssetsByUnityId: []
 }
 
 export const setAssets = createAsyncThunk(
@@ -43,7 +44,16 @@ const assets = createSlice({
 	reducers: {
 		clearSelectedAsset(state) {
 			state.selectedAsset = {};
-		} 
+		},
+
+		setFilteredAssetsByUnityId(state, action) {
+			state.filteredAssetsByUnityId = state.allAssets
+				.filter(asset => asset.unitId === action.payload)
+		},
+
+		clearFilteredAssetsByUnityId(state) {
+			state.filteredAssetsByUnityId = {}
+		}
 	},
 
 	extraReducers: {
@@ -78,5 +88,9 @@ const assets = createSlice({
 
 })
 
-export const { clearSelectedAsset } = assets.actions;
+export const {
+	clearSelectedAsset,
+	setFilteredAssetsByUnityId,
+	clearFilteredAssetsByUnityId
+} = assets.actions;
 export default assets.reducer;

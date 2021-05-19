@@ -4,8 +4,8 @@ import api from "../services/api"
 const initialState = {
 	loading: false,
 	error: null,
-	allUnits: {},
-	selectedUnity: {},
+	allUnits: [],
+	selectedUnity: [],
 }
 
 export const setUnits = createAsyncThunk(

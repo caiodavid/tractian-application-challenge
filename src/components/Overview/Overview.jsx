@@ -18,18 +18,6 @@ export default function Overview() {
   const dispath = useDispatch();
   const allUnits = useSelector((state) => state.units.allUnits);
   const selectedUnity = useSelector((state) => state.units.selectedUnity);
-  const [activeUnits, setActiveUnits] = useState([]);
-
-  useEffect(() => {
-    Object.keys(selectedUnity).length === 0 && dispath(setUnits());
-  }, []);
-
-  useEffect(() => {
-    console.log("object");
-    Object.keys(selectedUnity).length === 0
-      ? setActiveUnits(allUnits)
-      : setActiveUnits([selectedUnity]);
-  }, [selectedUnity]);
 
   const handleChangeSelectedUnity = (unityId) => {
     unityId === null
