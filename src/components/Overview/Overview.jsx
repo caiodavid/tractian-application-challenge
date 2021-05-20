@@ -7,11 +7,12 @@ import {
   setSelectedUnity,
   clearSelectedUnity,
 } from "../../store/Units.store";
-// Style
+// Style and components
 import "./Overview.css";
+import UsersOverview from "../overviewComponents/UsersOverview/UsersOverview";
+import AssetsOverview from "../overviewComponents/AssetsOverview/AssetsOverview";
 // Ant Design
 import { Layout, Select, Row, Col } from "antd";
-import AssetsOverview from "../overviewComponents/AssetsOverview/AssetsOverview";
 const { Content, Footer, Header } = Layout;
 const { Option } = Select;
 
@@ -52,7 +53,7 @@ export default function Overview() {
         </Col>
 				<Col span={12}>
           <Content style={{ margin: "15px 16px" }}>
-            <AssetsOverview />
+            <UsersOverview />
           </Content>
         </Col>
       </Row>

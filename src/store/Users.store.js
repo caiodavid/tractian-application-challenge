@@ -6,6 +6,7 @@ const initialState = {
 	error: null,
 	allUsers: [],
 	selectedUser: [],
+	filteredUsersByUnityId: []
 }
 
 export const setUsers = createAsyncThunk(
@@ -42,6 +43,15 @@ const users = createSlice({
 	reducers: {
 		clearSelectedUser(state) {
 			state.selectedUser = {};
+		},
+
+		setFilteredUsersByUnityId(state, action) {
+			state.filteredUsersByUnityId = state.allUsers
+				.filter(user => user.unitId === action.payload)
+		},
+
+		clearFilteredUsersByUnityId(state) {
+			state.filteredUsersByUnityId = {}
 		}
 	},
 
@@ -75,5 +85,9 @@ const users = createSlice({
 	},
 })
 
-export const { clearSelectedUser } = users.actions;
+export const {
+	clearSelectedUser,
+	setFilteredUsersByUnityId,
+	clearFilteredUsersByUnityId
+} = users.actions;
 export default users.reducer;

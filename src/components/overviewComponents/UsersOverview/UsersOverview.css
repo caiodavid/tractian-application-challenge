@@ -1,0 +1,5 @@
+.demo-infinite-container {
+  max-height: 285px;
+  padding: 2px 24px;
+  overflow: auto;
+}
