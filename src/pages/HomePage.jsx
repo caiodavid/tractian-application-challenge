@@ -42,7 +42,7 @@ function HomePage() {
         </div>
 				<div className="company-container">
             <Avatar shape="square" size={70} icon={<ShopOutlined />} />
-            <h2 onClick={() => dispath(edit("Caio Enterprise"))}>
+            <h2>
               {loggedCompany.name}
             </h2>
           </div>
