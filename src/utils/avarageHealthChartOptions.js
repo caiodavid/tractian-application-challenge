@@ -51,7 +51,7 @@ export function getAvarageHealthChartOptions(avarageHealth) {
         y: 40,
         style: {
           color: "#A9A9A9",
-          fontSize: "20px",
+          fontSize: "1rem",
           fontWeight: "bold",
           lineHeight: "20px",
         },

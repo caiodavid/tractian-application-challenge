@@ -45,7 +45,7 @@ export default function UsersOverview() {
       )}
 
       <div className="demo-infinite-container">
-          {<List
+          <List
             dataSource={ usersList }
             renderItem={(item) => (
               <List.Item key={item.id}>
@@ -59,7 +59,7 @@ export default function UsersOverview() {
                 <div>Content</div>
               </List.Item>
             )}
-          ></List>}
+          ></List>
       </div>
     </div>
   );
