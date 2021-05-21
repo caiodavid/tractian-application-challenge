@@ -93,7 +93,14 @@ export default function AssetsOverview() {
       )}
 
       <div className="highcharts-content">
-        <HighchartsReact highcharts={Highcharts} options={overviewAssetsChartOptions(inOperationCounter, inAlertCounter, inDowntimeCounter)} />
+        <HighchartsReact
+          highcharts={Highcharts}
+          options={overviewAssetsChartOptions(
+            inOperationCounter,
+            inAlertCounter,
+            inDowntimeCounter
+          )}
+        />
       </div>
     </div>
   );

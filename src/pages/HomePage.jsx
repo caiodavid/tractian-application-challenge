@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 // Style and Components
 import logo from "../assets/Logo-Tractian.svg";
+import fakeCompanyLogo from "../assets/dunder-mifflin-logo.jpg"
 import "./HomePage.css";
 import Overview from "../components/Overview/Overview";
 // Redux
@@ -49,8 +50,8 @@ function HomePage() {
             Ativos
           </Menu.Item>
         </Menu>
-        <div>
-          <Avatar shape="square" size={64} icon={<UserOutlined />} />
+        <div className="company-container">
+          <Avatar src={fakeCompanyLogo} shape="square" size={70} icon={<UserOutlined />} />
 					<h2 onClick={() => dispath(edit('Caio Enterprise'))}>{loggedCompany.name}</h2>
         </div>
       </Sider>

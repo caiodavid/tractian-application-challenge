@@ -1,6 +1,5 @@
 // React
 import { useState, useEffect } from "react";
-import InfiniteScroll from "react-infinite-scroller";
 // Style and Components
 import "./UsersOverview.css";
 // Redux

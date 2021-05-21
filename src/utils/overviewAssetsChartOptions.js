@@ -2,12 +2,15 @@ export function overviewAssetsChartOptions(inOperationCounter, inAlertCounter, i
 	const options = {
 		chart: {
 			plotBorderWidth: 0,
+			margin: [0, 0, 0, 0],
+			height: 300,
+			spacing: [40, 0, 0, 0]
 		},
 		title: {
 			text: `ATIVOS`,
 			align: "center",
 			verticalAlign: "middle",
-			y: -80,
+			y: -30,
 			style: {
 				color: "#A9A9A9",
 				fontSize: "20px",
@@ -22,8 +25,8 @@ export function overviewAssetsChartOptions(inOperationCounter, inAlertCounter, i
 				},
 				startAngle: -120,
 				endAngle: 120,
-				center: ["50%", "35%"],
-				size: "75%",
+				center: ["50%", "50%"],
+				size: "100%",
 			},
 		},
 
@@ -35,10 +38,9 @@ export function overviewAssetsChartOptions(inOperationCounter, inAlertCounter, i
 				fontWeight: "bold",
 				fontSize: "20px",
 			},
-			text: `${inOperationCounter + inAlertCounter + inDowntimeCounter
-				}&#128640`,
+			text: `${inOperationCounter + inAlertCounter + inDowntimeCounter}`,
 			verticalAlign: "middle",
-			y: -40,
+			y: 0,
 		},
 
 		colors: [
@@ -69,7 +71,8 @@ export function overviewAssetsChartOptions(inOperationCounter, inAlertCounter, i
 			{
 				type: "pie",
 				name: "Quantidade",
-				innerSize: "88%",
+				innerSize: "80%",
+				size: "100%",
 				data: [
 					["Em operação", inOperationCounter],
 					["Em alerta", inAlertCounter],
@@ -84,11 +87,15 @@ export function overviewAssetsChartOptions(inOperationCounter, inAlertCounter, i
 			align: 'right',
 			verticalAlign: 'center',
 			itemMarginBottom: 10,
-      itemStyle: {
+			itemStyle: {
 				color: "#4F4F4F",
 				fontSize: 14,
 				fontWeight: "normal",
 			},
+			labelFormatter: function () {
+				return `${this.name}:  <b>${this.y}</b>`;
+			},
+			y: -30
 		},
 	};
 

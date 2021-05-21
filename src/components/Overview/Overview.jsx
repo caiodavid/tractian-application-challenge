@@ -1,9 +1,6 @@
-// React
-import { useState, useEffect } from "react";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import {
-  setUnits,
   setSelectedUnity,
   clearSelectedUnity,
 } from "../../store/Units.store";
@@ -11,6 +8,9 @@ import {
 import "./Overview.css";
 import UsersOverview from "../overviewComponents/UsersOverview/UsersOverview";
 import AssetsOverview from "../overviewComponents/AssetsOverview/AssetsOverview";
+import AvarageHealthOverview from "../overviewComponents/AvarageHealthOverview/AvarageHealthOverview";
+import SensorActivity from "../overviewComponents/SensorActivity/SensorActivity";
+import SickAssets from "../overviewComponents/SickAssets/SickAssets";
 // Ant Design
 import { Layout, Select, Row, Col } from "antd";
 const { Content, Footer, Header } = Layout;
@@ -46,12 +46,12 @@ export default function Overview() {
         </Select>
       </Header>
       <Row>
-        <Col span={12}>
+        <Col style={{ margin: "0"}} lg = {{span:24}} xl = {{span:12}}>
           <Content style={{ margin: "15px 16px" }}>
             <AssetsOverview />
           </Content>
         </Col>
-				<Col span={12}>
+				<Col style={{ margin: "0"}} lg = {{span:24}} xl = {{span:12}}>
           <Content style={{ margin: "15px 16px" }}>
             <UsersOverview />
           </Content>
@@ -59,9 +59,19 @@ export default function Overview() {
       </Row>
 
 			<Row>
-        <Col span={24}>
+        <Col style={{ margin: "0"}} lg = {{span:24}} xl = {{span:8}}>
           <Content style={{ margin: "15px 16px" }}>
-            <AssetsOverview />
+            <AvarageHealthOverview />
+          </Content>
+        </Col>
+				<Col style={{ margin: "0"}} lg = {{span:24}} xl = {{span:8}}>
+          <Content style={{ margin: "15px 16px" }}>
+            <SickAssets />
+          </Content>
+        </Col>
+				<Col style={{ margin: "0"}} lg = {{span:24}} xl = {{span:8}}>
+          <Content style={{ margin: "15px 16px" }}>
+            <SensorActivity />
           </Content>
         </Col>
       </Row>
