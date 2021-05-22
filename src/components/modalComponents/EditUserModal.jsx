@@ -16,7 +16,6 @@ export default function EditUserModal() {
   );
   const selectedUser = useSelector((state) => state.users.selectedUser);
   const allUnits = useSelector((state) => state.units.allUnits);
-console.log(selectedUser);
   const [newUserName, setNewUserName] = useState(selectedUser.name);
   const [newUserEmail, setNewUserEmail] = useState(selectedUser.email);
   const [newUnityId, setNewUnityId] = useState(selectedUser.unityId);

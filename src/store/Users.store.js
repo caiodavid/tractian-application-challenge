@@ -54,7 +54,7 @@ const users = createSlice({
 		},
 
 		editUser(state, action) {
-			state.allUsers.map(user => 
+			state.allUsers.map(user =>
 				user.id === action.payload[0] && (
 					user.name = action.payload[1],
 					user.email = action.payload[2],
@@ -64,8 +64,19 @@ const users = createSlice({
 		},
 
 		createUser(state, action) {
-			console.log(action.payload);
+			const newUserData = {
+				id: action.payload[0],
+				name: action.payload[1],
+				email: action.payload[2],
+				unitId: action.payload[3]
+			}
+			state.allUsers.push(newUserData)
 		},
+
+		deleteUser(state, action) {
+			console.log(action.payload);
+			state.allUsers = state.allUsers.filter(user => user.id !== action.payload)
+		}
 	},
 
 	extraReducers: {
@@ -90,6 +101,7 @@ export const {
 	setFilteredUsersByUnityId,
 	clearFilteredUsersByUnityId,
 	editUser,
-	createUser
+	createUser,
+	deleteUser
 } = users.actions;
 export default users.reducer;

@@ -8,6 +8,7 @@ import {
   setFilteredUsersByUnityId,
   clearFilteredUsersByUnityId,
   setSelectedUser,
+  deleteUser,
 } from "../../../store/Users.store";
 import {
   handleCreateUserModalVisibility,
@@ -50,6 +51,11 @@ export default function UsersOverview() {
     dispath(handleCreateUserModalVisibility());
   }
 
+  function handleDeleteUser(id) {
+    console.log(id);
+    dispath(deleteUser(id));
+  }
+
   return (
     <div className="site-layout-background component-box">
       <div className="user-container-header">
@@ -86,7 +92,12 @@ export default function UsersOverview() {
                 >
                   Editar
                 </Button>
-                <Button type="text" danger size="small">
+                <Button
+                  type="text"
+                  danger
+                  size="small"
+                  onClick={() => handleDeleteUser(item.id)}
+                >
                   Excluir
                 </Button>
               </div>
