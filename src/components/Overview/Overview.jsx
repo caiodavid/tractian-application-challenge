@@ -1,9 +1,6 @@
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setSelectedUnity,
-  clearSelectedUnity,
-} from "../../store/Units.store";
+import { setSelectedUnity, clearSelectedUnity } from "../../store/Units.store";
 // Style and components
 import "./Overview.css";
 import UsersOverview from "../overviewComponents/UsersOverview/UsersOverview";
@@ -12,7 +9,7 @@ import AvarageHealthOverview from "../overviewComponents/AvarageHealthOverview/A
 import SensorActivity from "../overviewComponents/SensorActivity/SensorActivity";
 import SickAssets from "../overviewComponents/SickAssets/SickAssets";
 // Ant Design
-import { Layout, Select, Row, Col } from "antd";
+import { Layout, Select, Row, Col, Button } from "antd";
 const { Content, Footer, Header } = Layout;
 const { Option } = Select;
 
@@ -44,32 +41,42 @@ export default function Overview() {
               </Option>
             ))}
         </Select>
+        <Button
+          disabled={Object.keys(selectedUnity).length === 0 ? true : false}
+          type="primary"
+        >
+          Editar unidade
+        </Button>
+
+        <Button type="primary">
+          Adicionar unidade
+        </Button>
       </Header>
       <Row>
-        <Col style={{ margin: "0"}} lg = {{span:24}} xl = {{span:12}}>
+        <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 12 }}>
           <Content style={{ margin: "15px 16px" }}>
             <AssetsOverview />
           </Content>
         </Col>
-				<Col style={{ margin: "0"}} lg = {{span:24}} xl = {{span:12}}>
+        <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 12 }}>
           <Content style={{ margin: "15px 16px" }}>
             <UsersOverview />
           </Content>
         </Col>
       </Row>
 
-			<Row>
-        <Col style={{ margin: "0"}} lg = {{span:24}} xl = {{span:8}}>
+      <Row>
+        <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 8 }}>
           <Content style={{ margin: "15px 16px" }}>
             <AvarageHealthOverview />
           </Content>
         </Col>
-				<Col style={{ margin: "0"}} lg = {{span:24}} xl = {{span:8}}>
+        <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 8 }}>
           <Content style={{ margin: "15px 16px" }}>
             <SickAssets />
           </Content>
         </Col>
-				<Col style={{ margin: "0"}} lg = {{span:24}} xl = {{span:8}}>
+        <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 8 }}>
           <Content style={{ margin: "15px 16px" }}>
             <SensorActivity />
           </Content>
@@ -79,7 +86,7 @@ export default function Overview() {
       <Footer style={{ textAlign: "center" }}>
         Desenvolvido por:{" "}
         <a href="https://github.com/caiodavid" target="_blank">
-           Caio David de Souza
+          Caio David de Souza
         </a>
       </Footer>
     </>

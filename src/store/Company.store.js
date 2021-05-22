@@ -25,7 +25,7 @@ const company = createSlice({
 	name: 'company',
 	initialState,
 	reducers: {
-		edit(state, action) {
+		editCompany(state, action) {
 			state.loggedCompany.name = action.payload;
 			state.hasEdited = true;
 		}
@@ -47,5 +47,5 @@ const company = createSlice({
 
 })
 
-export const { edit } = company.actions;
+export const { editCompany } = company.actions;
 export default company.reducer;

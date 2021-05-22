@@ -5,7 +5,13 @@ const initialState = {
 	loading: false,
 	error: null,
 	allUsers: [],
-	selectedUser: [],
+	selectedUser: [{
+		id: 0,
+		name: "",
+		email: "",
+		unitId: "",
+		companyId: ""
+	}],
 	filteredUsersByUnityId: []
 }
 
@@ -22,25 +28,17 @@ export const setUsers = createAsyncThunk(
 	}
 )
 
-export const setSelectedUser = createAsyncThunk(
-	'users/setSelectedUser',
-	async (userId) => {
-		try {
-			const response = await api.get(`users/${userId}`)
-			return response.data;
-
-		} catch (error) {
-			throw Error(error)
-		}
-	}
-)
-
 const users = createSlice({
 
 	name: 'users',
 	initialState,
 
 	reducers: {
+		setSelectedUser(state, action) {
+			state.selectedUser = state.allUsers
+				.filter(user => user.id === action.payload)
+		},
+
 		clearSelectedUser(state) {
 			state.selectedUser = {};
 		},
@@ -52,6 +50,16 @@ const users = createSlice({
 
 		clearFilteredUsersByUnityId(state) {
 			state.filteredUsersByUnityId = {}
+		},
+
+		editUser(state, action) {
+			state.allUsers.map(user => 
+				user.id === action.payload[0] && (
+					user.name = action.payload[1],
+					user.email = action.payload[2],
+					user.unitId = action.payload[3]
+				)
+			)
 		}
 	},
 
@@ -68,26 +76,15 @@ const users = createSlice({
 		[setUsers.rejected]: (state, action) => {
 			state.error = action.error.message;
 			state.loading = false;
-		},
-
-		[setSelectedUser.pending]: (state, action) => {
-			state.loading = true;
-			state.error = null;
-		},
-		[setSelectedUser.fulfilled]: (state, action) => {
-			state.selectedUser = action.payload;
-			state.loading = false;
-		},
-		[setSelectedUser.rejected]: (state, action) => {
-			state.error = action.error.message;
-			state.loading = false;
 		}
 	},
 })
 
 export const {
+	setSelectedUser,
 	clearSelectedUser,
 	setFilteredUsersByUnityId,
-	clearFilteredUsersByUnityId
+	clearFilteredUsersByUnityId,
+	editUser
 } = users.actions;
 export default users.reducer;

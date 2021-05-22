@@ -16,6 +16,7 @@ import companyReducer from './Company.store'
 import unitsReducer from './Units.store'
 import usersReducer from './Users.store'
 import assetsReducer from './Assets.store'
+import modalsReducer from './Modals.store'
 
 
 const rootReducer = combineReducers({
@@ -23,7 +24,8 @@ const rootReducer = combineReducers({
 	company: companyReducer,
 	units: unitsReducer,
 	users: usersReducer,
-	assets: assetsReducer
+	assets: assetsReducer,
+	modals: modalsReducer
 })
 
 const persistConfig = {
