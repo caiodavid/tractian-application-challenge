@@ -9,7 +9,10 @@ import {
   clearFilteredUsersByUnityId,
   setSelectedUser,
 } from "../../../store/Users.store";
-import { handleEditUserModalVisibility } from "../../../store/Modals.store";
+import {
+  handleCreateUserModalVisibility,
+  handleEditUserModalVisibility,
+} from "../../../store/Modals.store";
 // Ant Design
 import { List, Avatar, Button } from "antd";
 
@@ -43,6 +46,10 @@ export default function UsersOverview() {
     dispath(handleEditUserModalVisibility());
   }
 
+  function showCreateUserModal() {
+    dispath(handleCreateUserModalVisibility());
+  }
+
   return (
     <div className="site-layout-background component-box">
       <div className="user-container-header">
@@ -51,7 +58,11 @@ export default function UsersOverview() {
         ) : (
           <h1>Usuários da {selectedUnity.name}</h1>
         )}
-        <Button key="submit" type="primary">
+        <Button
+          key="submit"
+          type="primary"
+          onClick={() => showCreateUserModal()}
+        >
           Adicionar usuário
         </Button>
       </div>

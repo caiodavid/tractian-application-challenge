@@ -4,45 +4,33 @@ import { useEffect, useState } from "react";
 import { Modal, Button, Form, Input, Select } from "antd";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
-import { handleEditUserModalVisibility } from "../../store/Modals.store";
-import { editUser } from "../../store/Users.store";
+import { handleCreateUserModalVisibility } from "../../store/Modals.store";
+import { createUser } from "../../store/Users.store";
 
 const { Option } = Select;
 
-export default function EditUserModal() {
+export default function CreateUserModal() {
   const dispath = useDispatch();
   const isModalVisible = useSelector(
-    (state) => state.modals.isEditUserModalVisible
+    (state) => state.modals.isCreateUserModalVisible
   );
-  const selectedUser = useSelector((state) => state.users.selectedUser[0]);
-  const allUnits = useSelector((state) => state.units.allUnits);
 
-  const [newUserName, setNewUserName] = useState(
-    useSelector((state) => selectedUser.name)
-  );
-  const [newUserEmail, setNewUserEmail] = useState(
-    useSelector((state) => selectedUser.email)
-  );
-  const [newUnityId, setNewUnityId] = useState(
-    useSelector((state) => selectedUser.unityId)
-  );
-  const selectedUserId = useSelector((state) => selectedUser.id);
+	const allUnits = useSelector((state) => state.units.allUnits);
+
+	const [newUserName, setNewUserName] = useState("");
+  const [newUserEmail, setNewUserEmail] = useState("");
+  const [newUnityId, setNewUnityId] = useState(1);
+  const userId = Math.random();
 
   const [form] = Form.useForm();
 
-	useEffect(() => {
-		setNewUserName(selectedUser.name)
-		setNewUserEmail(selectedUser.email)
-		setNewUnityId(selectedUser.unitId)
-	}, [selectedUser])
-
   const handleOk = () => {
-    dispath(editUser([selectedUserId, newUserName, newUserEmail, newUnityId]));
-    dispath(handleEditUserModalVisibility());
+    dispath(createUser([userId, newUserName, newUserEmail, newUnityId]));
+    dispath(handleCreateUserModalVisibility());
   };
 
   const handleCancel = () => {
-    dispath(handleEditUserModalVisibility());
+    dispath(handleCreateUserModalVisibility());
   }; 
 
 	const handleChangeSelectedUnity = (unitId) => {
@@ -52,7 +40,7 @@ export default function EditUserModal() {
   return (
     <>
       <Modal
-        title="Editar usuário"
+        title="Criar novo usuário"
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}

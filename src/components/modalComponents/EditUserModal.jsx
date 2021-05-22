@@ -14,27 +14,21 @@ export default function EditUserModal() {
   const isModalVisible = useSelector(
     (state) => state.modals.isEditUserModalVisible
   );
-  const selectedUser = useSelector((state) => state.users.selectedUser[0]);
+  const selectedUser = useSelector((state) => state.users.selectedUser);
   const allUnits = useSelector((state) => state.units.allUnits);
-
-  const [newUserName, setNewUserName] = useState(
-    useSelector((state) => selectedUser.name)
-  );
-  const [newUserEmail, setNewUserEmail] = useState(
-    useSelector((state) => selectedUser.email)
-  );
-  const [newUnityId, setNewUnityId] = useState(
-    useSelector((state) => selectedUser.unityId)
-  );
-  const selectedUserId = useSelector((state) => selectedUser.id);
+console.log(selectedUser);
+  const [newUserName, setNewUserName] = useState(selectedUser.name);
+  const [newUserEmail, setNewUserEmail] = useState(selectedUser.email);
+  const [newUnityId, setNewUnityId] = useState(selectedUser.unityId);
+  const selectedUserId = selectedUser.id;
 
   const [form] = Form.useForm();
 
-	useEffect(() => {
-		setNewUserName(selectedUser.name)
-		setNewUserEmail(selectedUser.email)
-		setNewUnityId(selectedUser.unitId)
-	}, [selectedUser])
+  useEffect(() => {
+    setNewUserName(selectedUser.name);
+    setNewUserEmail(selectedUser.email);
+    setNewUnityId(selectedUser.unitId);
+  }, [selectedUser]);
 
   const handleOk = () => {
     dispath(editUser([selectedUserId, newUserName, newUserEmail, newUnityId]));
@@ -43,11 +37,11 @@ export default function EditUserModal() {
 
   const handleCancel = () => {
     dispath(handleEditUserModalVisibility());
-  }; 
+  };
 
-	const handleChangeSelectedUnity = (unitId) => {
+  const handleChangeSelectedUnity = (unitId) => {
     setNewUnityId(unitId);
-  }; 
+  };
 
   return (
     <>
@@ -81,10 +75,7 @@ export default function EditUserModal() {
             />
           </Form.Item>
           <Form.Item label="Unidade do colaborador" required>
-            <Select
-              value={newUnityId}
-              onChange={handleChangeSelectedUnity}
-            >
+            <Select value={newUnityId} onChange={handleChangeSelectedUnity}>
               {allUnits.length > 0 &&
                 allUnits.map((unity) => (
                   <Option key={unity.id} value={unity.id}>

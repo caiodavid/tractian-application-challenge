@@ -5,13 +5,13 @@ const initialState = {
 	loading: false,
 	error: null,
 	allUsers: [],
-	selectedUser: [{
+	selectedUser: {
 		id: 0,
-		name: "",
-		email: "",
-		unitId: "",
-		companyId: ""
-	}],
+		name: " ",
+		email: " ",
+		unitId: " ",
+		companyId: " "
+	},
 	filteredUsersByUnityId: []
 }
 
@@ -35,8 +35,9 @@ const users = createSlice({
 
 	reducers: {
 		setSelectedUser(state, action) {
-			state.selectedUser = state.allUsers
+			let filtredUser = state.allUsers
 				.filter(user => user.id === action.payload)
+			state.selectedUser = filtredUser[0]
 		},
 
 		clearSelectedUser(state) {
@@ -60,7 +61,11 @@ const users = createSlice({
 					user.unitId = action.payload[3]
 				)
 			)
-		}
+		},
+
+		createUser(state, action) {
+			console.log(action.payload);
+		},
 	},
 
 	extraReducers: {
@@ -70,7 +75,6 @@ const users = createSlice({
 		},
 		[setUsers.fulfilled]: (state, action) => {
 			state.allUsers = action.payload;
-			state.selectedUser = {};
 			state.loading = false;
 		},
 		[setUsers.rejected]: (state, action) => {
@@ -85,6 +89,7 @@ export const {
 	clearSelectedUser,
 	setFilteredUsersByUnityId,
 	clearFilteredUsersByUnityId,
-	editUser
+	editUser,
+	createUser
 } = users.actions;
 export default users.reducer;
