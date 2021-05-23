@@ -1,0 +1,63 @@
+.ant-layout-header.overview-header{
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	background: #fff;
+	border-bottom: 1px solid #021529;
+	gap: 10px;
+}
+
+.component-box {
+  padding: 24px;
+  min-height: 360px;
+  border: 2px solid #0215297c;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.assets-component-container {
+	padding: 20px 20px 70px 20px;
+}
+
+.assets-container {
+	height: 100%;
+	padding: 20px 20px 50px 20px ;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: start;
+	gap: 20px;
+	margin-top: 15px;
+	background: #FFFFFF;
+	border: 2px solid #0215297c;
+	border-radius: 8px;
+}
+
+.tag-box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 15px;
+	width: 100px;
+	border-radius: 8px
+}
+
+.tag-box.alert {
+	background: rgb(255, 255, 0);
+}
+
+.tag-box.operation {
+	background: green;
+}
+
+.tag-box.downtime {
+	background: red;
+}
+
+.tag-box.downtime p,
+.tag-box.operation p,
+.tag-box.alert p{
+	margin: 0;
+	font-weight:500;
+	color: black
+}

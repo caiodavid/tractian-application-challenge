@@ -63,6 +63,9 @@ const assets = createSlice({
 		},
 		[setAssets.fulfilled]: (state, action) => {
 			state.allAssets = action.payload;
+			state.allAssets.map(asset => (
+				asset.responsible = null
+			));
 			state.selectedAsset = {};
 			state.loading = false;
 		},

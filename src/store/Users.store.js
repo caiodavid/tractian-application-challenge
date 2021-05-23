@@ -41,7 +41,7 @@ const users = createSlice({
 		},
 
 		clearSelectedUser(state) {
-			state.selectedUser = {};
+			state.selectedUser = [{}];
 		},
 
 		setFilteredUsersByUnityId(state, action) {
@@ -50,7 +50,7 @@ const users = createSlice({
 		},
 
 		clearFilteredUsersByUnityId(state) {
-			state.filteredUsersByUnityId = {}
+			state.filteredUsersByUnityId = [{}]
 		},
 
 		editUser(state, action) {

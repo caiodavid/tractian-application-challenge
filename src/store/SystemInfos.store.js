@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-	firstLoad: true
+	firstLoad: true,
+	activeContainer: "overview"
 }
 
 
@@ -13,10 +14,14 @@ const systemInfo = createSlice({
 	reducers: {
 		handleFirstLoad(state) {
 			state.firstLoad = false;
+		},
+
+		handleChangeActiveContainer(state, action) {
+			state.activeContainer = action.payload
 		}
 	},
 
 })
 
-export const { handleFirstLoad } = systemInfo.actions;
+export const { handleFirstLoad, handleChangeActiveContainer } = systemInfo.actions;
 export default systemInfo.reducer;

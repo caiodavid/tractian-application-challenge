@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import logo from "../assets/Logo-Tractian.svg";
 import "./HomePage.css";
 import Overview from "../components/Overview/Overview";
+import AssetsViewer from "../components/AssetsViewer/AssetsViewer";
 import AllModals from "../components/modalComponents/AllModals";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -11,7 +12,10 @@ import { setLoggedCompany, edit } from "../store/Company.store";
 import { setUnits } from "../store/Units.store";
 import { setUsers } from "../store/Users.store";
 import { setAssets } from "../store/Assets.store";
-import { handleFirstLoad } from "../store/SystemInfos.store";
+import {
+  handleFirstLoad,
+  handleChangeActiveContainer,
+} from "../store/SystemInfos.store";
 import { handleEditCompanyModalVisibility } from "../store/Modals.store";
 // Ant Design
 import { Layout, Menu, Avatar } from "antd";
@@ -28,6 +32,9 @@ function HomePage() {
   const dispath = useDispatch();
   const loggedCompany = useSelector((state) => state.company.loggedCompany);
   const isTheFirstLoad = useSelector((state) => state.systemInfo.firstLoad);
+  const activeContainer = useSelector(
+    (state) => state.systemInfo.activeContainer
+  );
 
   useEffect(() => {
     isTheFirstLoad && setInitialStates();
@@ -42,7 +49,7 @@ function HomePage() {
   }
 
   return (
-    <Layout style={{ mixHeight: "100vh" }}>
+    <Layout style={{ minHeight: "100vh" }}>
       <AllModals />
       <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
         <div className="logo">
@@ -55,18 +62,27 @@ function HomePage() {
             Editar <EditOutlined />
           </a>
         </div>
-        <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-          <Menu.Item key="1" icon={<PieChartOutlined />}>
+        <Menu theme="dark" defaultSelectedKeys={activeContainer} mode="inline">
+          <Menu.Item
+            key="overview"
+            icon={<PieChartOutlined />}
+            onClick={() => dispath(handleChangeActiveContainer("overview"))}
+          >
             Visão Geral
           </Menu.Item>
-          <Menu.Item key="2" icon={<ApiOutlined />}>
+          <Menu.Item
+            key="assetsViewer"
+            icon={<ApiOutlined />}
+            onClick={() => dispath(handleChangeActiveContainer("assetsViewer"))}
+          >
             Ativos
           </Menu.Item>
         </Menu>
       </Sider>
 
-      <Layout className="site-layout">
-        <Overview />
+      <Layout className="site-layout" >
+        {activeContainer === "overview" && <Overview />}
+        {activeContainer === "assetsViewer" && <AssetsViewer />}
       </Layout>
     </Layout>
   );
