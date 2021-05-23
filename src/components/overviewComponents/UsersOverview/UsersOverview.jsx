@@ -52,11 +52,8 @@ export default function UsersOverview() {
   }
 
   function handleDeleteUser(id) {
-    console.log(id);
     dispath(deleteUser(id));
   }
-
-	console.log(usersList);
 
   return (
     <div className="site-layout-background component-box">

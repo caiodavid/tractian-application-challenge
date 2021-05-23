@@ -1,0 +1,28 @@
+.tag-box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 15px;
+	width: 100px;
+	border-radius: 8px
+}
+
+.tag-box.alert {
+	background: rgb(255, 255, 0);
+}
+
+.tag-box.operation {
+	background: green;
+}
+
+.tag-box.downtime {
+	background: red;
+}
+
+.tag-box.downtime p,
+.tag-box.operation p,
+.tag-box.alert p{
+	margin: 0;
+	font-weight:500;
+	color: black
+}

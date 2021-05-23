@@ -3,6 +3,7 @@ import EditCompanyModal from './EditCompanyModal'
 import EditUserModal from './EditUserModal'
 import EditUnitModal from './EditUnitModal'
 import CreateUnitModal from './CreateUnitModal';
+import EditAssetModal from './EditAssetModal';
 
 export default function AllModals() {
 
@@ -13,6 +14,7 @@ export default function AllModals() {
 			<CreateUserModal />
 			<EditUnitModal />
 			<CreateUnitModal />
+			<EditAssetModal />
     </>
   );
 }
