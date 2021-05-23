@@ -4,7 +4,6 @@ export function getAssetResponsible(responsibleId, allUsers) {
 		return "Ativo sem responsável"
 	} else {
 		const responsible = allUsers.filter(user => user.id === responsibleId)
-		console.log(responsible);
 		return `Responsável: ${responsible[0].name}`
 	}
 }

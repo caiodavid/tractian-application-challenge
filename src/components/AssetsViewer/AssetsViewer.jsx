@@ -4,10 +4,14 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   clearFilteredAssetsByUnityId,
+	deleteAsset,
   setFilteredAssetsByUnityId,
   setSelectedAsset,
 } from "../../store/Assets.store";
-import { handleEditAssetModalVisibility } from "../../store/Modals.store";
+import {
+  handleCreateAssetModalVisibility,
+  handleEditAssetModalVisibility,
+} from "../../store/Modals.store";
 // Style and components
 import "./AssetsViewer.css";
 import HeaderComponent from "../HeaderComponent/HeaderComponent";
@@ -25,7 +29,7 @@ export default function AssetsViewer() {
   const selectedUnity = useSelector((state) => state.units.selectedUnity);
 
   const allAssets = useSelector((state) => state.assets.allAssets);
-	const allUsers = useSelector((state) => state.users.allUsers);
+  const allUsers = useSelector((state) => state.users.allUsers);
   const [selectedAssets, setSelectedAssets] = useState(
     useSelector((state) => state.assets.allAssets)
   );
@@ -54,17 +58,25 @@ export default function AssetsViewer() {
     dispath(handleEditAssetModalVisibility());
   }
 
+  function showAssetCreateModal() {
+    dispath(handleCreateAssetModalVisibility());
+  }
+
   return (
     <>
       <HeaderComponent />
       <div className="assets-component-container">
-        <Button style={{ width: 200 }} type="primary">
+        <Button
+          style={{ width: 200 }}
+          type="primary"
+          onClick={() => showAssetCreateModal()}
+        >
           Adicionar ativo
         </Button>
         <div className="assets-container">
           {selectedAssets.map((asset) => (
             <Card
-							key={asset.id}
+              key={asset.id}
               hoverable
               style={{ minWidth: 300, minHeight: 300 }}
               cover={
@@ -77,7 +89,7 @@ export default function AssetsViewer() {
               actions={[
                 <EyeOutlined />,
                 <EditOutlined onClick={() => showAssetEditModal(asset.id)} />,
-                <DeleteOutlined />,
+                <DeleteOutlined onClick={() => dispath(deleteAsset(asset.id))}/>,
               ]}
             >
               <StatusTag name={asset.status} />

@@ -87,7 +87,8 @@ const assets = createSlice({
 					totalUptime: 0,
 					lastUptimeAt: null
 				},
-				companyId:1
+				companyId:1,
+				healthscore: 60
 			}
 			state.allAssets.push(newAssetData)
 		},

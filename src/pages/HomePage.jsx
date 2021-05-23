@@ -59,7 +59,7 @@ function HomePage() {
           <Avatar shape="square" size={70} icon={<ShopOutlined />} />
           <h2>{loggedCompany.name}</h2>
           <a onClick={() => dispath(handleEditCompanyModalVisibility())}>
-            Editar <EditOutlined />
+            <EditOutlined />
           </a>
         </div>
         <Menu theme="dark" defaultSelectedKeys={activeContainer} mode="inline">

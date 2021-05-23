@@ -4,6 +4,7 @@ import EditUserModal from './EditUserModal'
 import EditUnitModal from './EditUnitModal'
 import CreateUnitModal from './CreateUnitModal';
 import EditAssetModal from './EditAssetModal';
+import CreateAssetModal from './CreateAssetModal';
 
 export default function AllModals() {
 
@@ -15,6 +16,7 @@ export default function AllModals() {
 			<EditUnitModal />
 			<CreateUnitModal />
 			<EditAssetModal />
+			<CreateAssetModal />
     </>
   );
 }
