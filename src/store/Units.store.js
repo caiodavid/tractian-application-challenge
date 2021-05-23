@@ -52,15 +52,14 @@ const units = createSlice({
 				)
 			)
 		},
-	},
 
-	createUnit(state, action) {
-		console.log('object');
-		const newUnitData = {
-			id: action.payload[0],
-			name: action.payload[1],
-		}
-		state.allUnits.push(newUnitData)
+		createUnit(state, action) {
+			const newUnitData = {
+				id: action.payload[0],
+				name: action.payload[1],
+			}
+			state.allUnits.push(newUnitData)
+		},
 	},
 
 	extraReducers: {

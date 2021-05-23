@@ -42,6 +42,7 @@ export default function Overview() {
         <Select
           defaultValue={selectedUnity.id === 0 ? null : selectedUnity.id}
           onChange={handleChangeSelectedUnity}
+					style={{ width: 200 }}
         >
           <Option value={null}>Todas as unidades</Option>
           {allUnits.length > 0 &&

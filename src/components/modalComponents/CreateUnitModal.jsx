@@ -17,8 +17,6 @@ export default function CreateUnitModal() {
 
   const [form] = Form.useForm();
 
-	console.log(newUnitName);
-
   const handleOk = () => {
     dispath(createUnit([unitId, newUnitName]));
     dispath(handleCreateUnityModalVisibility());
