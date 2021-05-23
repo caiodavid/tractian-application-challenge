@@ -40,7 +40,7 @@ export default function SensorActivity() {
     let hours = 0;
     let collections = 0;
 
-    if (Object.keys(filteredAssetsByUnityId).length === 0) {
+    if (selectedUnity.id === 0) {
       allAssets.map(
         (asset) => (
           (hours += parseFloat(asset.metrics.totalUptime.toFixed(2))),
@@ -64,7 +64,7 @@ export default function SensorActivity() {
     <Row gutter={[0, 16]}>
       <Col style={colStyle} span={24}>
         <Content style={contentStyle}>
-          {Object.keys(filteredAssetsByUnityId).length === 0 ? (
+          {selectedUnity.id === 0 ? (
             <>
               <h1>Total de coletas na empresa</h1>
               <h2>{totalCollections}</h2>
@@ -79,7 +79,7 @@ export default function SensorActivity() {
       </Col>
       <Col style={colStyle} span={24}>
         <Content style={contentStyle}>
-          {Object.keys(filteredAssetsByUnityId).length === 0 ? (
+          {selectedUnity.id === 0 ? (
             <>
               <h1>Total de horas de coletas na empresa</h1>
               <h2>{totalHoursCollected}h</h2>

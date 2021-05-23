@@ -10,6 +10,10 @@ import SensorActivity from "../overviewComponents/SensorActivity/SensorActivity"
 import SickAssets from "../overviewComponents/SickAssets/SickAssets";
 // Ant Design
 import { Layout, Select, Row, Col, Button } from "antd";
+import {
+  handleCreateUnityModalVisibility,
+  handleEditUnityModalVisibility,
+} from "../../store/Modals.store";
 const { Content, Footer, Header } = Layout;
 const { Option } = Select;
 
@@ -24,13 +28,19 @@ export default function Overview() {
       : dispath(setSelectedUnity(unityId));
   };
 
+  function showUnitEditModal() {
+    dispath(handleEditUnityModalVisibility());
+  }
+
+  function showCreateUnitModal() {
+    dispath(handleCreateUnityModalVisibility());
+  }
+
   return (
     <>
       <Header className="overview-header">
         <Select
-          defaultValue={
-            Object.keys(selectedUnity).length === 0 ? null : selectedUnity.id
-          }
+          defaultValue={selectedUnity.id === 0 ? null : selectedUnity.id}
           onChange={handleChangeSelectedUnity}
         >
           <Option value={null}>Todas as unidades</Option>
@@ -42,13 +52,14 @@ export default function Overview() {
             ))}
         </Select>
         <Button
-          disabled={Object.keys(selectedUnity).length === 0 ? true : false}
+          disabled={selectedUnity.id === 0 ? true : false}
           type="primary"
+          onClick={() => showUnitEditModal()}
         >
           Editar unidade
         </Button>
 
-        <Button type="primary">
+        <Button type="primary" onClick={() => showCreateUnitModal()}>
           Adicionar unidade
         </Button>
       </Header>

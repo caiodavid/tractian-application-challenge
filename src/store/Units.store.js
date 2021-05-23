@@ -5,7 +5,11 @@ const initialState = {
 	loading: false,
 	error: null,
 	allUnits: [],
-	selectedUnity: [],
+	selectedUnity: {
+		id: 0,
+		name: " ",
+		companyId: " "
+	},
 }
 
 export const setUnits = createAsyncThunk(
@@ -21,30 +25,42 @@ export const setUnits = createAsyncThunk(
 	}
 )
 
-export const setSelectedUnity = createAsyncThunk(
-	'units/setSelectedUnity',
-	async (unityId) => {
-		try {
-			const response = await api.get(`units/${unityId}`)
-			return response.data;
-
-		} catch (error) {
-			throw Error(error)
-		}
-	}
-)
-
-
-
 const units = createSlice({
 
 	name: 'units',
 	initialState,
 
 	reducers: {
+		setSelectedUnity(state, action) {
+			let filtredUnit = state.allUnits
+				.filter(unit => unit.id === action.payload)
+			state.selectedUnity = filtredUnit[0]
+		},
+
 		clearSelectedUnity(state) {
-			state.selectedUnity = {};
-		} 
+			state.selectedUnity = {
+				id: 0,
+				name: " ",
+				companyId: " "
+			};
+		},
+
+		editUnit(state, action) {
+			state.allUnits.map(unit =>
+				unit.id === action.payload[0] && (
+					unit.name = action.payload[1]
+				)
+			)
+		},
+	},
+
+	createUnit(state, action) {
+		console.log('object');
+		const newUnitData = {
+			id: action.payload[0],
+			name: action.payload[1],
+		}
+		state.allUnits.push(newUnitData)
 	},
 
 	extraReducers: {
@@ -54,30 +70,16 @@ const units = createSlice({
 		},
 		[setUnits.fulfilled]: (state, action) => {
 			state.allUnits = action.payload;
-			state.selectedUnity = {};
 			state.loading = false;
 		},
 		[setUnits.rejected]: (state, action) => {
 			state.error = action.error.message;
 			state.loading = false;
 		},
-
-		[setSelectedUnity.pending]: (state, action) => {
-			state.loading = true;
-			state.error = null;
-		},
-		[setSelectedUnity.fulfilled]: (state, action) => {
-			state.selectedUnity = action.payload;
-			state.loading = false;
-		},
-		[setSelectedUnity.rejected]: (state, action) => {
-			state.error = action.error.message;
-			state.loading = false;
-		}
 	},
 
 
 })
 
-export const { clearSelectedUnity } = units.actions;
+export const { setSelectedUnity, clearSelectedUnity, editUnit, createUnit } = units.actions;
 export default units.reducer;

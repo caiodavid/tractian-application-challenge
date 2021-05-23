@@ -26,7 +26,7 @@ export default function AssetsOverview() {
   );
 
   useEffect(() => {
-    if (Object.keys(selectedUnity).length === 0) {
+    if (selectedUnity.id === 0) {
       dispath(clearFilteredAssetsByUnityId());
     } else {
       dispath(setFilteredAssetsByUnityId(selectedUnity.id));
@@ -39,7 +39,7 @@ export default function AssetsOverview() {
     let inDowntimeStatus = 0;
     let inOperationStatus = 0;
 
-    if (Object.keys(selectedUnity).length === 0) {
+    if (selectedUnity.id === 0) {
       allAssets.map((asset) => {
         switch (asset.status) {
           case "inAlert":
@@ -86,7 +86,7 @@ export default function AssetsOverview() {
 
   return (
     <div className="site-layout-background component-box">
-      {Object.keys(selectedUnity).length === 0 ? (
+      {selectedUnity.id === 0 ? (
         <h1>Todas as unidades</h1>
       ) : (
         <h1>{selectedUnity.name}</h1>

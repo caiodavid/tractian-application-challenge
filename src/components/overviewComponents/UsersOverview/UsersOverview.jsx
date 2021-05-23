@@ -27,7 +27,7 @@ export default function UsersOverview() {
   const [usersList, setUsersList] = useState(allUsers);
 
   useEffect(() => {
-    if (Object.keys(selectedUnity).length === 0) {
+    if (selectedUnity.id === 0) {
       dispath(clearFilteredUsersByUnityId());
     } else {
       dispath(setFilteredUsersByUnityId(selectedUnity.id));
@@ -35,7 +35,7 @@ export default function UsersOverview() {
   }, [selectedUnity, allUsers]);
 
   useEffect(() => {
-    if (Object.keys(selectedUnity).length === 0) {
+    if (selectedUnity.id === 0) {
       setUsersList(allUsers);
     } else {
       setUsersList(filteredUsersByUnityId);
@@ -59,7 +59,7 @@ export default function UsersOverview() {
   return (
     <div className="site-layout-background component-box">
       <div className="user-container-header">
-        {Object.keys(selectedUnity).length === 0 ? (
+        {selectedUnity.id === 0 ? (
           <h1>Todos os usuários</h1>
         ) : (
           <h1>Usuários da {selectedUnity.name}</h1>

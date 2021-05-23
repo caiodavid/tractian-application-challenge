@@ -29,7 +29,7 @@ export default function AvarageHealthOverview() {
   // useEffect para atualizar pontuacao media de saude
   useEffect(() => {
     let sumOfHealth = 0;
-    if (Object.keys(selectedUnity).length === 0) {
+    if (selectedUnity.id === 0) {
       allAssets.map((asset) => {
         sumOfHealth += asset.healthscore;
       });
@@ -49,7 +49,7 @@ export default function AvarageHealthOverview() {
 
   return (
     <div className="site-layout-background component-box">
-      {Object.keys(selectedUnity).length === 0 ? (
+      {selectedUnity.id === 0 ? (
         <h1>Pontuaçao média da saúde dos ativos</h1>
       ) : (
         <h1>Pontuaçao média da saúde dos ativos da {selectedUnity.name}</h1>
