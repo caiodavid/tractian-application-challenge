@@ -4,14 +4,15 @@ export function getAvarageHealthChartOptions(avarageHealth) {
       type: "solidgauge",
       margin: [0, 0, 0, 0],
       padding: 0,
-      height: "50%",
+      height: "250px",
+			width: 480
     },
 
     title: null,
 
     pane: {
       center: ["50%", "70%"],
-      size: "100%",
+      size: "90%",
       startAngle: -90,
       endAngle: 90,
       background: {
@@ -66,7 +67,6 @@ export function getAvarageHealthChartOptions(avarageHealth) {
       {
         name: "Healthscore",
         type: "solidgauge",
-        innerSize: "80%",
         data: [avarageHealth],
         dataLabels: {
           format:

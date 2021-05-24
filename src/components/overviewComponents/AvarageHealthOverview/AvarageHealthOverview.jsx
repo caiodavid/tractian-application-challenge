@@ -1,7 +1,5 @@
 // React
 import { useState, useEffect } from "react";
-// Style and Components
-import "./AvarageHealthOverview.css";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 // Ant Design

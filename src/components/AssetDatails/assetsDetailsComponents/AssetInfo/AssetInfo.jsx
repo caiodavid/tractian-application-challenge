@@ -63,7 +63,7 @@ export default function AssetInfo() {
       <div className="asset-info-container">
         <Row>
           <Col span={14}>
-            <img src={selectedAsset.image} alt="" />
+            <img src={selectedAsset.image} style={{maxHeight: 230}} alt="" />
           </Col>
           <Col span={10}>
             <div className="asset-info-item">

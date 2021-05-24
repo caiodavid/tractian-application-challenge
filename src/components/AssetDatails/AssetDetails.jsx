@@ -6,19 +6,26 @@ import "./AssetDetails.css";
 import { Layout, Row, Col, Button } from "antd";
 import { handleChangeActiveContainer } from "../../store/SystemInfos.store";
 import AssetInfo from "./assetsDetailsComponents/AssetInfo/AssetInfo";
+import AssetSensors from "./assetsDetailsComponents/AssetSensors/AssetSensors";
+import AssetHealthscore from "./assetsDetailsComponents/AssetHealthscore/AssetHealthscore";
+import AssetSpecifications from "./assetsDetailsComponents/AssetSpecifications/AssetSpecifications";
+import AssetOtherInfos from "./assetsDetailsComponents/AssetOtherInfos/AssetsOtherInfos";
 const { Content, Footer, Header } = Layout;
 
 export default function AssetDetails() {
-	const dispath = useDispatch();
+  const dispath = useDispatch();
   return (
     <>
       <Header className="overview-header">
-        <Button type="secondary" onClick={() => dispath(handleChangeActiveContainer("assetsViewer"))}>
-         Voltar para todos os ativos
+        <Button
+          type="secondary"
+          onClick={() => dispath(handleChangeActiveContainer("assetsViewer"))}
+        >
+          Voltar para todos os ativos
         </Button>
       </Header>
       <div className="details-container">
-        <Row >
+        <Row>
           <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 8 }}>
             <Content style={{ margin: "15px 16px" }}>
               <AssetInfo />
@@ -26,25 +33,25 @@ export default function AssetDetails() {
           </Col>
           <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 8 }}>
             <Content style={{ margin: "15px 16px" }}>
-						<AssetInfo />
+              <AssetSensors />
             </Content>
           </Col>
-					<Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 8 }}>
+          <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 8 }}>
             <Content style={{ margin: "15px 16px" }}>
-						<AssetInfo />
+              <AssetHealthscore />
             </Content>
           </Col>
         </Row>
 
         <Row>
-          <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 12}}>
+          <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 12 }}>
             <Content style={{ margin: "15px 16px" }}>
-						<AssetInfo />
+              <AssetSpecifications />
             </Content>
           </Col>
-          <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 12}}>
+          <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 12 }}>
             <Content style={{ margin: "15px 16px" }}>
-						<AssetInfo />
+              <AssetOtherInfos />
             </Content>
           </Col>
         </Row>
