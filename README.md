@@ -10,19 +10,9 @@
 </p>
 
 <p align="center">
-	<img width="100%" src="src/assets/to_git/home_page.gif">
+	<img width="100%" src="src/assets/to_git/tractian.gif">
 </p>
 
-<p align="center">
-	<img width="100%" src="src/assets/to_git/complete_task.gif">
-</p>
-
-<p align="center">
-	<img width="400px" src="src/assets/to_git/add_task.gif">
-	<img width="400px" src="src/assets/to_git/delete_task.gif">
-	<img width="400px" src="src/assets/to_git/see_more.gif">
-	<img width="400px" src="src/assets/to_git/edit_task.gif">
-</p>
 
 ## :page_with_curl: Descrição do projeto
 Teste prático proposto pela Tractian no processo de seleção com o objetivo de validar os conhecimentos técnicos em desenvolvimento frontend, lógica de programação e entendimento da demanda proposta.
