@@ -1,8 +1,5 @@
-// React
-// Style and Components
-// import "./UsersOverview.css";
 // Redux
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 // Ant Design
 import { Row, Col } from "antd";
 import { Content } from "antd/lib/layout/layout";
@@ -14,9 +11,6 @@ export default function AssetOtherInfos() {
     margin: "0",
     borderRadius: "8px",
   };
-	console.log(selectedAsset.specifications.power===undefined);
-
-	
 
   const contentStyle = {
     padding: "24px",

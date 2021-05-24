@@ -16,12 +16,12 @@ export default function Overview() {
     <>
 			<HeaderComponent />
       <Row>
-        <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 12 }}>
+        <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 24 }} xxl={{ span: 12 }}>
           <Content style={{ margin: "15px 16px" }}>
             <AssetsOverview />
           </Content>
         </Col>
-        <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 12 }}>
+        <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 24 }} xxl={{ span: 12 }}>
           <Content style={{ margin: "15px 16px" }}>
             <UsersOverview />
           </Content>
@@ -29,17 +29,17 @@ export default function Overview() {
       </Row>
 
       <Row>
-        <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 8 }}>
+        <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 24 }} xxl={{ span: 8 }}>
           <Content style={{ margin: "15px 16px" }}>
             <AvarageHealthOverview />
           </Content>
         </Col>
-        <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 8 }}>
+        <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 24 }} xxl={{ span: 8 }}>
           <Content style={{ margin: "15px 16px" }}>
             <SickAssets />
           </Content>
         </Col>
-        <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 8 }}>
+        <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 24 }} xxl={{ span: 8 }}>
           <Content style={{ margin: "15px 16px" }}>
             <SensorActivity />
           </Content>

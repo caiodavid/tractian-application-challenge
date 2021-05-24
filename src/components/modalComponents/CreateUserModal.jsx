@@ -1,5 +1,5 @@
 // React
-import { useEffect, useState } from "react";
+import { useState } from "react";
 // AntDesign
 import { Modal, Button, Form, Input, Select } from "antd";
 // Redux

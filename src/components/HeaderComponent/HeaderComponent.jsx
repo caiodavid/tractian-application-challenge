@@ -1,8 +1,6 @@
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedUnity, clearSelectedUnity } from "../../store/Units.store";
-// Style and components
-// import "./Overview.css";
 // Ant Design
 import { Layout, Select, Button } from "antd";
 import {
@@ -14,7 +12,6 @@ const { Option } = Select;
 
 export default function HeaderComponent() {
 	const dispath = useDispatch();
-
 
 	const allUnits = useSelector((state) => state.units.allUnits);
   const selectedUnity = useSelector((state) => state.units.selectedUnity);

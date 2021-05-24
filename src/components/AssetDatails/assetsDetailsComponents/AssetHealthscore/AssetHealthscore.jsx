@@ -2,7 +2,6 @@
 import { useSelector } from "react-redux";
 // Ant Design
 import { Divider } from "antd";
-import { BranchesOutlined } from "@ant-design/icons";
 // highcharts
 import Highcharts from "highcharts";
 import highchartsMore from "highcharts/highcharts-more.js";

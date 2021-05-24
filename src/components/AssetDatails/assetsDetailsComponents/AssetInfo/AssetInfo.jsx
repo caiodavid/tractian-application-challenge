@@ -1,19 +1,19 @@
 // React
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 // Style and Components
 import "./AssetInfo.css";
+import { StatusTag } from "../../../StatusTag/StatusTag";
 // Utils
 import { getAssetUnit } from "../../../../utils/getAssetUnit";
 import { getAssetResponsible } from "../../../../utils/getAssetResponsible";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 import { handleEditAssetModalVisibility } from "../../../../store/Modals.store";
+import { handleChangeActiveContainer } from "../../../../store/SystemInfos.store";
 import { deleteAsset, setSelectedAsset } from "../../../../store/Assets.store";
 // Ant Design
 import { Button, Col, Divider, Popconfirm, Row } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
-import { StatusTag } from "../../../StatusTag/StatusTag";
-import { handleChangeActiveContainer } from "../../../../store/SystemInfos.store";
 
 export default function AssetInfo() {
   const dispath = useDispatch();

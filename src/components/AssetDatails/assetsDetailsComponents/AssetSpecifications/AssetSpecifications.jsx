@@ -1,14 +1,14 @@
+// React
+import { useEffect } from "react";
 // Redux
 import { useSelector } from "react-redux";
 // Ant Design
 import { Col, Divider, Row } from "antd";
-import { BranchesOutlined } from "@ant-design/icons";
 // highcharts
 import Highcharts from "highcharts";
 import highchartsMore from "highcharts/highcharts-more.js";
 import solidGauge from "highcharts/modules/solid-gauge.js";
 import HighchartsReact from "highcharts-react-official";
-import { useEffect, useState } from "react";
 import { maxTemperatureChartOptions } from "../../../../utils/maxTemperatureChartOptions";
 
 highchartsMore(Highcharts);
@@ -17,8 +17,8 @@ solidGauge(Highcharts);
 export default function AssetSpecifications() {
   const selectedAsset = useSelector((state) => state.assets.selectedAsset);
 	const allAssets = useSelector((state) => state.assets.allAssets);
-	console.log(selectedAsset.specifications.maxTemp);
-  useEffect(() => {
+
+	useEffect(() => {
     maxTemperatureChartOptions(selectedAsset.specifications.maxTemp);
   }, [selectedAsset, allAssets]);
 

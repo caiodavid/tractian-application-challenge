@@ -1,15 +1,16 @@
 // Redux
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 // Style and components
 import "./AssetDetails.css";
-// Ant Design
-import { Layout, Row, Col, Button } from "antd";
-import { handleChangeActiveContainer } from "../../store/SystemInfos.store";
 import AssetInfo from "./assetsDetailsComponents/AssetInfo/AssetInfo";
 import AssetSensors from "./assetsDetailsComponents/AssetSensors/AssetSensors";
 import AssetHealthscore from "./assetsDetailsComponents/AssetHealthscore/AssetHealthscore";
 import AssetSpecifications from "./assetsDetailsComponents/AssetSpecifications/AssetSpecifications";
 import AssetOtherInfos from "./assetsDetailsComponents/AssetOtherInfos/AssetsOtherInfos";
+// Ant Design
+import { Layout, Row, Col, Button } from "antd";
+import { handleChangeActiveContainer } from "../../store/SystemInfos.store";
+
 const { Content, Footer, Header } = Layout;
 
 export default function AssetDetails() {
@@ -26,17 +27,17 @@ export default function AssetDetails() {
       </Header>
       <div className="details-container">
         <Row>
-          <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 8 }}>
+          <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 12 }} xxl={{ span: 8 }}>
             <Content style={{ margin: "15px 16px" }}>
               <AssetInfo />
             </Content>
           </Col>
-          <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 8 }}>
+          <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 12 }} xxl={{ span: 8 }}>
             <Content style={{ margin: "15px 16px" }}>
               <AssetSensors />
             </Content>
           </Col>
-          <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 8 }}>
+          <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 24 }} xxl={{ span: 8 }}>
             <Content style={{ margin: "15px 16px" }}>
               <AssetHealthscore />
             </Content>
@@ -44,12 +45,12 @@ export default function AssetDetails() {
         </Row>
 
         <Row>
-          <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 12 }}>
+          <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 24 }} xxl={{ span: 12 }}>
             <Content style={{ margin: "15px 16px" }}>
               <AssetSpecifications />
             </Content>
           </Col>
-          <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 12 }}>
+          <Col style={{ margin: "0" }} lg={{ span: 24 }} xl={{ span: 24 }} xxl={{ span: 12 }}>
             <Content style={{ margin: "15px 16px" }}>
               <AssetOtherInfos />
             </Content>

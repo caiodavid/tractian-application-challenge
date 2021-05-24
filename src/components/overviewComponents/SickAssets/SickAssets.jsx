@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import "./SickAssets.css";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
+import { setSelectedAsset } from "../../../store/Assets.store";
+import { handleChangeActiveContainer } from "../../../store/SystemInfos.store";
 // Ant Design
 import { List, Avatar } from "antd";
 
@@ -17,6 +19,11 @@ export default function SickAssets() {
     let filteredAssets = allAssets.filter((asset) => asset.healthscore < 60);
     setSickAssets(filteredAssets);
   }, [allAssets]);
+
+	function goToAssetDetail(id) {
+    dispath(setSelectedAsset(id));
+    dispath(handleChangeActiveContainer("assetDetails"));
+  }
 
   return (
     <>
@@ -34,7 +41,7 @@ export default function SickAssets() {
                   title={<a href="https://ant.design">{item.name}</a>}
                   description={`Healthscore: ${item.healthscore}`}
                 />
-                <a>Ver mais</a>
+                <a onClick={() => goToAssetDetail(item.id)}>Ver mais</a>
               </List.Item>
             )}
           ></List>

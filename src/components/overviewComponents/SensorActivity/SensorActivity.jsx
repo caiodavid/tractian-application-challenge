@@ -1,7 +1,5 @@
 // React
 import { useState, useEffect } from "react";
-// Style and Components
-// import "./UsersOverview.css";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 // Ant Design
