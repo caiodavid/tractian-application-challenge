@@ -56,5 +56,3 @@ O sistema deveria consumir uma API Fake e a partir da leitura desse dados plotar
 <img border-radius = "50%" src="https://avatars.githubusercontent.com/u/62821483?v=4" width="100px;" alt=""/>
 <br />
 <sub><b>Caio David de Souza</b></sub></a> <a href="https://github.com/caiodavid" title="GitHub">🚀</a>
-
-Feito com ❤️ por Caio 👋🏽 
