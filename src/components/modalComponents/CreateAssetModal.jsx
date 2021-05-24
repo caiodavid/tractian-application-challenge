@@ -6,6 +6,7 @@ import { Modal, Button, Form, Input, Row, Col, Divider, Select } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { handleCreateAssetModalVisibility } from "../../store/Modals.store";
 import { createAsset } from "../../store/Assets.store";
+import { handleShowAlert } from "../../store/SystemInfos.store";
 
 const { Option } = Select;
 
@@ -48,6 +49,10 @@ export default function CreateAssetModal() {
       ])
     );
     dispath(handleCreateAssetModalVisibility());
+		dispath(handleShowAlert(true))
+		setTimeout(() => {
+			dispath(handleShowAlert(false))
+		}, 1000);
   };
 
   const handleCancel = () => {

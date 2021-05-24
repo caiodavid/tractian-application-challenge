@@ -6,6 +6,7 @@ import { Modal, Button, Form, Input } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { handleEditCompanyModalVisibility } from "../../store/Modals.store";
 import { editCompany } from "../../store/Company.store";
+import { handleShowAlert } from "../../store/SystemInfos.store";
 
 export default function EditCompanyModal() {
   const dispath = useDispatch();
@@ -21,6 +22,10 @@ export default function EditCompanyModal() {
   const handleOk = () => {
 		dispath(editCompany(newCompanyName))
     dispath(handleEditCompanyModalVisibility());
+		dispath(handleShowAlert(true))
+		setTimeout(() => {
+			dispath(handleShowAlert(false))
+		}, 2000);
   };
 
   const handleCancel = () => {

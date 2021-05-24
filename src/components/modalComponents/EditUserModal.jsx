@@ -6,6 +6,7 @@ import { Modal, Button, Form, Input, Select } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { handleEditUserModalVisibility } from "../../store/Modals.store";
 import { editUser } from "../../store/Users.store";
+import { handleShowAlert } from "../../store/SystemInfos.store";
 
 const { Option } = Select;
 
@@ -32,6 +33,10 @@ export default function EditUserModal() {
   const handleOk = () => {
     dispath(editUser([selectedUserId, newUserName, newUserEmail, newUnityId]));
     dispath(handleEditUserModalVisibility());
+		dispath(handleShowAlert(true))
+		setTimeout(() => {
+			dispath(handleShowAlert(false))
+		}, 2000);
   };
 
   const handleCancel = () => {

@@ -6,6 +6,7 @@ import { Modal, Button, Form, Input } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { handleEditUnityModalVisibility } from "../../store/Modals.store";
 import { editUnit } from "../../store/Units.store";
+import { handleShowAlert } from "../../store/SystemInfos.store";
 
 export default function EditUnitModal() {
   const dispath = useDispatch();
@@ -24,6 +25,10 @@ export default function EditUnitModal() {
   const handleOk = () => {
     dispath(editUnit([selectedUnit.id, newUnitName]));
     dispath(handleEditUnityModalVisibility());
+		dispath(handleShowAlert(true))
+		setTimeout(() => {
+			dispath(handleShowAlert(false))
+		}, 2000);
   };
 
   const handleCancel = () => {

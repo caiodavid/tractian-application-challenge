@@ -6,6 +6,7 @@ import { Modal, Button, Form, Input, Select } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { handleCreateUserModalVisibility } from "../../store/Modals.store";
 import { createUser } from "../../store/Users.store";
+import { handleShowAlert } from "../../store/SystemInfos.store";
 
 const { Option } = Select;
 
@@ -27,6 +28,10 @@ export default function CreateUserModal() {
   const handleOk = () => {
     dispath(createUser([userId, newUserName, newUserEmail, newUnityId]));
     dispath(handleCreateUserModalVisibility());
+		dispath(handleShowAlert(true))
+		setTimeout(() => {
+			dispath(handleShowAlert(false))
+		}, 2000);
   };
 
   const handleCancel = () => {

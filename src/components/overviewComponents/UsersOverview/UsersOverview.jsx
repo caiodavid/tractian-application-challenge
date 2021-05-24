@@ -16,6 +16,7 @@ import {
 } from "../../../store/Modals.store";
 // Ant Design
 import { List, Avatar, Button, Popconfirm } from "antd";
+import { handleShowAlert } from "../../../store/SystemInfos.store";
 
 export default function UsersOverview() {
   const dispath = useDispatch();
@@ -53,6 +54,10 @@ export default function UsersOverview() {
 
   function handleDeleteUser(id) {
     dispath(deleteUser(id));
+		dispath(handleShowAlert(true))
+		setTimeout(() => {
+			dispath(handleShowAlert(false))
+		}, 2000);
   }
 
   return (

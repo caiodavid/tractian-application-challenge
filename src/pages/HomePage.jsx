@@ -16,16 +16,18 @@ import { setAssets } from "../store/Assets.store";
 import {
   handleFirstLoad,
   handleChangeActiveContainer,
+  handleLoading,
 } from "../store/SystemInfos.store";
 import { handleEditCompanyModalVisibility } from "../store/Modals.store";
 // Ant Design
-import { Layout, Menu, Avatar } from "antd";
+import { Layout, Menu, Avatar, Alert } from "antd";
 import {
   ApiOutlined,
   PieChartOutlined,
   ShopOutlined,
   EditOutlined,
 } from "@ant-design/icons";
+import Loading from "../components/Loading/Loading";
 const { Sider } = Layout;
 
 function HomePage() {
@@ -36,6 +38,8 @@ function HomePage() {
   const activeContainer = useSelector(
     (state) => state.systemInfo.activeContainer
   );
+  const isLoading = useSelector((state) => state.systemInfo.loading);
+  const isAlertVisible = useSelector((state) => state.systemInfo.showAlert);
 
   useEffect(() => {
     isTheFirstLoad && setInitialStates();
@@ -47,6 +51,16 @@ function HomePage() {
     dispath(setUsers());
     dispath(setAssets());
     dispath(handleFirstLoad());
+  }
+
+  function changeActiveContainer(containerName) {
+    if (containerName !== activeContainer) {
+      dispath(handleChangeActiveContainer(containerName));
+			dispath(handleLoading(true));
+      setTimeout(() => {
+        dispath(handleLoading(false));
+      }, 1500);
+    }
   }
 
   return (
@@ -66,25 +80,43 @@ function HomePage() {
         <Menu theme="dark" defaultSelectedKeys={activeContainer} mode="inline">
           <Menu.Item
             key="overview"
-            icon={<PieChartOutlined />}
-            onClick={() => dispath(handleChangeActiveContainer("overview"))}
+            icon={<PieChartOutlined style={{ fontSize: 18 }} />}
+            onClick={() => changeActiveContainer("overview")}
+            style={{ fontSize: 16, letterSpacing: 1.5 }}
           >
             Visão Geral
           </Menu.Item>
           <Menu.Item
             key="assetsViewer"
-            icon={<ApiOutlined />}
-            onClick={() => dispath(handleChangeActiveContainer("assetsViewer"))}
+            icon={<ApiOutlined style={{ fontSize: 18 }} />}
+            style={{ fontSize: 16, letterSpacing: 1.5 }}
+            onClick={() => changeActiveContainer("assetsViewer")}
           >
             Ativos
           </Menu.Item>
         </Menu>
       </Sider>
 
-      <Layout className="site-layout" >
-        {activeContainer === "overview" && <Overview />}
-        {activeContainer === "assetsViewer" && <AssetsViewer />}
-				{activeContainer === "assetDetails" && <AssetDetails />}
+      <Layout className="site-layout">
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <>
+            {activeContainer === "overview" && <Overview />}
+            {activeContainer === "assetsViewer" && <AssetsViewer />}
+            {activeContainer === "assetDetails" && <AssetDetails />}
+            {isAlertVisible && (
+              <div className="alert-box">
+                <Alert
+                  style={{ width: 600 }}
+                  showIcon
+                  message="Operação concluida com sucesso"
+                  type="success"
+                />
+              </div>
+            )}
+          </>
+        )}
       </Layout>
     </Layout>
   );
