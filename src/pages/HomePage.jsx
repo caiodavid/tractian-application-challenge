@@ -5,10 +5,11 @@ import logo from "../assets/Logo-Tractian.svg";
 import "./HomePage.css";
 import Overview from "../components/Overview/Overview";
 import AssetsViewer from "../components/AssetsViewer/AssetsViewer";
+import AssetDetails from "../components/AssetDatails/AssetDetails";
 import AllModals from "../components/modalComponents/AllModals";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { setLoggedCompany, edit } from "../store/Company.store";
+import { setLoggedCompany } from "../store/Company.store";
 import { setUnits } from "../store/Units.store";
 import { setUsers } from "../store/Users.store";
 import { setAssets } from "../store/Assets.store";
@@ -83,6 +84,7 @@ function HomePage() {
       <Layout className="site-layout" >
         {activeContainer === "overview" && <Overview />}
         {activeContainer === "assetsViewer" && <AssetsViewer />}
+				{activeContainer === "assetDetails" && <AssetDetails />}
       </Layout>
     </Layout>
   );

@@ -45,7 +45,7 @@ export default function AvarageHealthOverview() {
       result = result.toFixed(2);
       setAvarageHealth(parseFloat(result));
     }
-  }, [filteredAssetsByUnityId]);
+  }, [filteredAssetsByUnityId, allAssets]);
 
   return (
     <div className="site-layout-background component-box">

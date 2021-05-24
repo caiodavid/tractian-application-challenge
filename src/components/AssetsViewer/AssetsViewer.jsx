@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   clearFilteredAssetsByUnityId,
-	deleteAsset,
+  deleteAsset,
   setFilteredAssetsByUnityId,
   setSelectedAsset,
 } from "../../store/Assets.store";
@@ -19,8 +19,9 @@ import { StatusTag } from "../StatusTag/StatusTag";
 // Utils
 import { getAssetResponsible } from "../../utils/getAssetResponsible";
 // Ant Design
-import { Layout, Card, Button } from "antd";
+import { Layout, Card, Button, Popconfirm } from "antd";
 import { EditOutlined, EyeOutlined, DeleteOutlined } from "@ant-design/icons";
+import { handleChangeActiveContainer } from "../../store/SystemInfos.store";
 const { Footer } = Layout;
 const { Meta } = Card;
 
@@ -43,7 +44,7 @@ export default function AssetsViewer() {
     } else {
       dispath(setFilteredAssetsByUnityId(selectedUnity.id));
     }
-  }, [selectedUnity]);
+  }, [selectedUnity, allAssets]);
 
   useEffect(() => {
     if (selectedUnity.id === 0) {
@@ -60,6 +61,11 @@ export default function AssetsViewer() {
 
   function showAssetCreateModal() {
     dispath(handleCreateAssetModalVisibility());
+  }
+
+  function goToAssetDetail(id) {
+    dispath(setSelectedAsset(id));
+    dispath(handleChangeActiveContainer("assetDetails"));
   }
 
   return (
@@ -87,15 +93,26 @@ export default function AssetsViewer() {
                 />
               }
               actions={[
-                <EyeOutlined />,
+                <EyeOutlined onClick={() => goToAssetDetail(asset.id)} />,
                 <EditOutlined onClick={() => showAssetEditModal(asset.id)} />,
-                <DeleteOutlined onClick={() => dispath(deleteAsset(asset.id))}/>,
+                <Popconfirm
+                  placement="topLeft"
+                  title={"Você tem certeza que deseja deletar este ativo?"}
+                  onConfirm={() => dispath(deleteAsset(asset.id))}
+                  okText="Sim"
+                  cancelText="Não"
+                >
+                  <DeleteOutlined />
+                </Popconfirm>
               ]}
             >
               <StatusTag name={asset.status} />
               <Meta
                 title={asset.name}
-                description={getAssetResponsible(asset.responsible, allUsers)}
+                description={`Responsável: ${getAssetResponsible(
+                  asset.responsible,
+                  allUsers
+                )}`}
               />
             </Card>
           ))}

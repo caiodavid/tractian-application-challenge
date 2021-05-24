@@ -58,7 +58,7 @@ export default function SensorActivity() {
 
     setTotalHoursCollected(hours);
     setTotalCollections(collections);
-  }, [filteredAssetsByUnityId]);
+  }, [filteredAssetsByUnityId, allAssets]);
 
   return (
     <Row gutter={[0, 16]}>

@@ -15,7 +15,7 @@ import {
   handleEditUserModalVisibility,
 } from "../../../store/Modals.store";
 // Ant Design
-import { List, Avatar, Button } from "antd";
+import { List, Avatar, Button, Popconfirm } from "antd";
 
 export default function UsersOverview() {
   const dispath = useDispatch();
@@ -91,14 +91,19 @@ export default function UsersOverview() {
                 >
                   Editar
                 </Button>
-                <Button
-                  type="text"
-                  danger
-                  size="small"
-                  onClick={() => handleDeleteUser(item.id)}
+                <Popconfirm
+                  placement="topLeft"
+                  title={
+                    "Você tem certeza que deseja deletar este coloborador?"
+                  }
+                  onConfirm={() => handleDeleteUser(item.id)}
+                  okText="Sim"
+                  cancelText="Não"
                 >
-                  Excluir
-                </Button>
+                  <Button type="text" danger size="small">
+                    Excluir
+                  </Button>
+                </Popconfirm>
               </div>
             </List.Item>
           )}

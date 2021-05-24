@@ -82,7 +82,7 @@ export default function AssetsOverview() {
     setInAlertCounter(inAlertStatus);
     setInDowntimeCounter(inDowntimeStatus);
     setInOperationCounter(inOperationStatus);
-  }, [filteredAssetsByUnityId]);
+  }, [filteredAssetsByUnityId, allAssets]);
 
   return (
     <div className="site-layout-background component-box">
