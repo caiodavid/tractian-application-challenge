@@ -1,11 +1,12 @@
 <h1 align="center">Tractian | Painel Administrativo :chart_with_upwards_trend:</h1> 
 
 <p align="center">
+  <a href="https://tractian-application-challenge.herokuapp.com/">Link para acessar o projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#page_with_curl-descrição-do-projeto">Descrição do projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#bulb-proposta-de-solução">Proposta de soluçao</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#bulb-solução-proposta">Solução proposta</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#hammer-tecnologias-utilizadas">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#computer-como-rodar-o-projeto">Como rodar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#bookmark_tabs-requisitos-passados-pela-verzel">Requisitos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#bookmark_tabs-requisitos-passados-pela-tractian">Requisitos</a>
 </p>
 
 <p align="center">
